@@ -10,7 +10,7 @@ class Gallery(models.Model):
     image = models.ImageField(
         verbose_name='Изображение',
         max_length=255,
-        upload_to=MEDIA_ROOT/'gallery'
+        upload_to="static/gallery"
     )
 
 
