@@ -1,0 +1,17 @@
+{% load static %}
+
+<div class="container">
+    <div class="team__content">
+        {% for person in persons %}
+            <div class="person">
+                <img class="person__img" src="{{ person.image }}" alt=""/>
+                <div class="person__info">
+                    <h3 class="person__name">{{ person.name }}</h3>
+                    <p class="person__post">{{ person.post }}</p>
+                    <a href="#" class="person__phone">{{ person.phone }}</a>
+                </div>
+                <div class="person-square"></div>
+            </div>
+        {% endfor %}
+    </div>
+</div>

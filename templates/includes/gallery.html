@@ -1,0 +1,29 @@
+{% load static %}
+
+<div class="container">
+    <div class="gallery__content">
+        <div class="gallery__hero">
+            <h2>Галерея</h2>
+            <p>Общественная Организации "Дети войны Севастополя " была создана в 2007 году, как ветеранская
+                организация, объединяющая детей, выживших в ту страшную войну и поднявших своими руками страну
+                из послевоенной разрухи!</p>
+        </div>
+
+        <div class="swiper">
+            <div class="swiper__bar">
+                <button class="swiper-next"><img src="{% static 'images/arrow-left.svg' %}" alt=""/></button>
+                <!-- <p>18/20</p> -->
+                <div class="swiper-pag"></div>
+                <button class="swiper-prev"><img src="{% static 'images/arrow-right.svg' %}" alt=""/></button>
+            </div>
+            <div class="swiper-wrapper">
+                {% for gallery in galleries %}
+                    <div class="swiper-slide">
+                        <div class="swiper-img"><img src="{{ gallery.image.url }}" alt="{{ gallery.title }}"/>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,13 @@
+{% load static %}
+
+
+<div class="container">
+    <div class="people__content">
+        <h2>Попечительский совет</h2>
+        <ol class="people__list">
+            {% for trustee in board_of_trustees %}
+                <li class="people__item">{{ trustee.name }}</li>
+            {% endfor %}
+        </ol>
+    </div>
+</div>

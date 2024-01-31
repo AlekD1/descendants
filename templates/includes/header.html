@@ -1,0 +1,27 @@
+{% load static %}
+
+
+<div class="header container">
+    <nav class="nav">
+        <div class="nav__logo">
+            <a href="#" class="nav__logo-bg"><img src="{% static 'images/logo.png' %}" alt=""/></a>
+        </div>
+        <ul class="nav__list">
+            <li class="nav__item"><a href="#" class="nav__link">Главная</a></li>
+            <li class="nav__item"><a href="#" class="nav__link">О нас</a></li>
+            <li class="nav__item"><a href="#" class="nav__link">Галерея</a></li>
+            <li class="nav__item"><a href="#" class="nav__link">Контакты</a></li>
+        </ul>
+    </nav>
+    <div class="header__content">
+        <div class="header__hero">
+            <h1 class="header__title"><span class="text_accent">Потомки победителей</span> - дети войны Севастополя
+            </h1>
+            <p class="header__subtitle">Севастопольская региональная общественная организация ветеранов</p>
+            <button class="header__button">Связаться</button>
+        </div>
+        <div class="header__picture"><img class="header__picture-img" src="{% static 'images/logo.png' %}" alt=""/>
+        </div>
+    </div>
+</div>
+<div class="header-rectangle"></div>
