@@ -1,0 +1,547 @@
+/*
+Remove all the styles of the "User-Agent-Stylesheet", except for the 'display' property
+  - The "symbol *" part is to solve Firefox SVG sprite bug
+*/
+*:where(:not(iframe, canvas, img, svg, video):not(svg *, symbol *)) {
+  all: unset;
+  display: revert;
+}
+
+/* Preferred box-sizing value */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Reapply the pointer cursor for anchor tags */
+a {
+  cursor: revert;
+}
+
+/* Remove list styles (bullets/numbers) */
+ol,
+ul,
+menu {
+  list-style: none;
+}
+
+/* For images to not be able to exceed their container */
+img {
+  max-width: 100%;
+}
+
+/* removes spacing between cells in tables */
+table {
+  border-collapse: collapse;
+}
+
+/* revert the 'white-space' property for textarea elements on Safari */
+textarea {
+  white-space: revert;
+}
+
+/* fix the feature of 'hidden' attribute.
+   display:revert; revert to element instead of attribute */
+:where([hidden]) {
+  display: none;
+}
+
+/* revert for bug in Chromium browsers
+   - fix for the content editable attribute will work properly. */
+:where([contenteditable]) {
+  -moz-user-modify: read-write;
+  -webkit-user-modify: read-write;
+  overflow-wrap: break-word;
+  -webkit-line-break: after-white-space;
+}
+
+/* apply back the draggable feature - exist only in Chromium and Safari */
+:where([draggable=true]) {
+  -webkit-user-drag: element;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  font-weight: 400;
+  src: local("Montserrat"), url("../../fonts/Montserrat/Montserrat-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Montserrat";
+  font-weight: 600;
+  src: local("Montserrat"), url("../../fonts/Montserrat/Montserrat-SemiBold.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Montserrat";
+  font-weight: 700;
+  src: local("Montserrat"), url("../../fonts/Montserrat/Montserrat-Bold.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Gotham";
+  font-weight: 700;
+  src: local("Gotham"), url("../../fonts/Gotham/gotham_bold.otf") format("truetype");
+}
+.none {
+  display: none;
+}
+
+body {
+  background-color: #c1c1c1;
+  color: #272727;
+  font-family: Montserrat;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  overflow-x: hidden;
+}
+
+h1 {
+  font-family: Gotham;
+  font-size: 40px;
+  font-weight: 700;
+  letter-spacing: -0.4px;
+}
+
+h2 {
+  font-family: Gotham;
+  font-size: 40px;
+  font-weight: 700;
+  width: 100%;
+}
+
+.text_accent {
+  color: #ec5151;
+  text-transform: uppercase;
+}
+
+.container {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+header {
+  height: 100vh;
+  background: url(../../images/background.png);
+  background-size: cover;
+  background-position: center;
+  padding-top: 24px;
+  margin-bottom: 140px;
+}
+header .header {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+header .header .nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+}
+header .header .nav__logo {
+  max-width: 120px;
+  max-height: 120px;
+  background: url(../../images/logo.png) no-repeat;
+  background-size: contain;
+}
+header .header .nav__logo-bg {
+  opacity: 0.6;
+  background: url(<path-to-image>), lightgray 50%/cover no-repeat;
+  filter: blur(25px);
+}
+header .header .nav__list {
+  display: flex;
+  gap: 60px;
+}
+header .header__content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header .header__hero {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 580px;
+  z-index: 2;
+}
+header .header__button {
+  width: -moz-min-content;
+  width: min-content;
+  padding: 18px 32px;
+  border-radius: 10px;
+  background: #ec5151;
+  box-shadow: 0px -4px 15px 0px rgba(80, 20, 21, 0.25);
+  font-weight: 600;
+  color: #ffffff;
+}
+header .header__picture {
+  border-radius: 500px;
+  background: radial-gradient(50% 50% at 50% 50%, #000 0%, #2b2b2b 100%);
+  box-shadow: 0px -4px 10px 0px rgba(0, 0, 0, 0.25);
+  width: 486px;
+  height: 486px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 80px;
+  z-index: 1;
+}
+header .header__picture img {
+  width: 100%;
+}
+header .header-rectangle {
+  border-radius: 10px;
+  background: #ec5151;
+  box-shadow: 0px -4px 10px 0px rgba(80, 20, 21, 0.25);
+  width: 394px;
+  height: 54px;
+  position: absolute;
+  right: -20px;
+  bottom: -30px;
+}
+
+.gallery {
+  margin-bottom: 240px;
+  position: relative;
+}
+.gallery__content {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  gap: 40px;
+}
+.gallery__hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  max-width: 380px;
+  height: 330px;
+}
+.gallery .swiper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  position: absolute;
+  right: -140px;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.team {
+  margin-bottom: 140px;
+}
+.team .team__content {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+.team .team__content .person {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  position: relative;
+}
+.team .team__content .person__img {
+  border-radius: 15px;
+  border: 3px solid #272727;
+  box-shadow: 0px -4px 15px 0px rgba(0, 0, 0, 0.25);
+  width: 200px;
+  height: 200px;
+  z-index: 1;
+  object-fit: cover;
+}
+.team .team__content .person__info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.team .team__content .person__name {
+  font-weight: 600;
+}
+.team .team__content .person__post {
+  font-size: 18px;
+}
+.team .team__content .person__phone {
+  color: #ec5151;
+  font-size: 18px;
+  font-weight: 700;
+}
+.team .team__content .person-square {
+  width: 30px;
+  height: 30px;
+  border-radius: 5px;
+  background: #ec5151;
+  position: absolute;
+  top: -15px;
+  left: -15px;
+  z-index: 2;
+}
+.team .team__content .person:nth-child(even) {
+  align-self: flex-end;
+  flex-direction: row-reverse;
+}
+.team .team__content .person:nth-child(even) .person-square {
+  width: 30px;
+  height: 30px;
+  border-radius: 5px;
+  background: #ec5151;
+  position: absolute;
+  top: -15px;
+  left: auto;
+  right: -15px;
+  z-index: 2;
+}
+
+.people {
+  margin-bottom: 140px;
+}
+.people__content {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+.people__content h2 {
+  text-align: center;
+}
+.people__list {
+  -moz-columns: 3;
+  columns: 3;
+  font-weight: 600;
+  list-style: decimal;
+  list-style-position: inside;
+  align-self: center;
+}
+.people__list li {
+  margin-bottom: 8px;
+}
+
+.form {
+  margin-bottom: 80px;
+}
+.form__wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding-left: 100px;
+}
+.form__content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.form__hero {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  width: 480px;
+}
+.form__hero input {
+  border-bottom: 1px solid #272727;
+  padding-bottom: 4px;
+}
+.form__hero textarea {
+  border-bottom: 1px solid #272727;
+}
+.form__hero button {
+  border-radius: 10px;
+  background: #ec5151;
+  box-shadow: 0px -4px 15px 0px rgba(80, 20, 21, 0.25);
+  display: flex;
+  padding: 18px 32px;
+  justify-content: center;
+  align-items: center;
+}
+.form__contacts {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+  position: absolute;
+  right: -30px;
+  width: 620px;
+  padding: 40px;
+  color: #ffffff;
+  border-radius: 10px;
+  background: #272727;
+}
+.form__contacts h3 {
+  margin-bottom: 40px;
+  color: #fff;
+  font-weight: 600;
+}
+.form__contacts-item {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  width: 100%;
+}
+.form-square {
+  width: 30px;
+  height: 30px;
+  border-radius: 5px;
+  background: #ec5151;
+  position: absolute;
+  top: -15px;
+  left: -15px;
+  z-index: 2;
+}
+
+footer {
+  height: 100px;
+  background: #ec5151;
+}
+
+@media screen and (width > 1920px) {
+  .form__wrapper {
+    padding-left: 16px;
+  }
+  .form__contacts {
+    position: relative;
+    right: auto;
+    width: 50%;
+  }
+  .swiper {
+    position: relative !important;
+    right: auto !important;
+  }
+}
+@media (width < 1200px) {
+  .container {
+    max-width: 880px;
+  }
+  .form__content {
+    flex-direction: column;
+    gap: 80px;
+  }
+  .form__hero {
+    align-self: flex-start;
+  }
+  .form__contacts {
+    position: relative;
+    right: auto;
+  }
+  .form__wrapper {
+    padding-left: 16px;
+  }
+  .form__contacts {
+    width: 480px;
+  }
+  .gallery__content {
+    flex-direction: column;
+  }
+  .swiper {
+    position: relative !important;
+    right: auto !important;
+  }
+  .gallery__hero {
+    max-width: 100%;
+  }
+  .swiper-img {
+    width: 240px !important;
+    height: 240px !important;
+  }
+  .header__hero {
+    max-width: 380px !important;
+  }
+}
+@media (width < 900px) {
+  .swiper-wrapper {
+    max-width: 500px !important;
+  }
+  .header__picture {
+    display: none !important;
+  }
+  .header__hero {
+    max-width: 70% !important;
+  }
+}
+@media (width <= 768px) {
+  body {
+    font-size: 16px !important;
+  }
+  h2 {
+    font-size: 32px;
+  }
+  .team__content {
+    gap: 80px !important;
+  }
+  .form__content {
+    gap: 80px;
+  }
+  .form__hero {
+    width: 100%;
+  }
+  .form__contacts {
+    width: 100%;
+    padding: 20px;
+  }
+  .person {
+    gap: 20px !important;
+  }
+  .person__img {
+    width: 140px !important;
+    height: 140px !important;
+  }
+  .person__info {
+    gap: 10px !important;
+  }
+  .person-square {
+    display: none;
+  }
+  .person__post {
+    font-size: 18px !important;
+  }
+  .person__phone {
+    font-size: 18px !important;
+  }
+  .people__list {
+    -moz-columns: 2;
+    columns: 2;
+  }
+}
+@media (width < 600px) {
+  .swiper-wrapper {
+    max-width: 300px !important;
+  }
+}
+.swiper-img {
+  text-align: center;
+  width: 280px;
+  height: 280px;
+  border-radius: 20px;
+  overflow: hidden;
+}
+.swiper-img img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  bottom: -15px;
+}
+
+.swiper-pag {
+  width: auto;
+}
+
+.swiper__bar {
+  display: flex;
+  align-items: center;
+  gap: 66px;
+  color: #ec5151;
+  font-family: Gotham;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.swiper-next,
+.swiper-prev {
+  cursor: pointer;
+}
+
+.swiper-wrapper {
+  max-width: 880px;
+}/*# sourceMappingURL=base.css.map */
