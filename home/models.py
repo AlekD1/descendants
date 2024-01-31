@@ -10,7 +10,7 @@ class Gallery(models.Model):
     image = models.ImageField(
         verbose_name='Изображение',
         max_length=255,
-        upload_to= MEDIA_ROOT/'gallary'
+        upload_to="static/gallery"
     )
 
 
@@ -33,7 +33,7 @@ class Person(models.Model):
     image = models.ImageField(
         verbose_name='Изображение',
         max_length=255,
-        upload_to=MEDIA_ROOT/'person'
+        upload_to="static/person"
     )
 
 
