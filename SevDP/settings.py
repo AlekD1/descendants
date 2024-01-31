@@ -109,12 +109,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-MIDDLEWARE = [
-    # ...
-    "django.middleware.security.SecurityMiddleware",
-    "whitenoise.middleware.WhiteNoiseMiddleware", # Here
-    # ...
-]
 
 
 # Internationalization
