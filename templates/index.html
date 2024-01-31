@@ -2,19 +2,21 @@
 {% load static %}
 
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Потомки победителей</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-    <link rel="stylesheet" href="{% static 'styles/css/base.css' %}"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Потомки победителей</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="{% static './styles/css/base.css' %}" />
 </head>
+
 <body>
-<header>
-  {% include 'includes/header.html' %}
-</header>
-<main>
+  <header>
+    {% include 'includes/header.html' %}
+  </header>
+  <main>
     <article class="gallery">
       {% include 'includes/gallery.html' %}
     </article>
@@ -27,9 +29,10 @@
     <article class="form">
       {% include 'includes/feedback_form.html' %}
     </article>
-</main>
-<footer></footer>
+  </main>
+  <footer></footer>
 
-<script src="{% static 'scripts/index.js' %}"></script>
+  <script src="{% static 'scripts/index.js' %}"></script>
 </body>
+
 </html>
